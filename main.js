@@ -126,3 +126,130 @@ let mikeSr = `${mike.firstName} ${mike.lastName}, age: ${mike.age}`;
 
 console.log(mikeSr);
 
+let mikeAdvanced = 
+{
+    firstName: 'Mike',
+    lastName : 'Bäck',
+    age: 38, 
+    hobbies: ['music', 'programming', 'reading', 'games']
+
+};
+
+console.log(mikeAdvanced);  //objekt
+let mikeJSON = JSON.stringify(mikeAdvanced); //objekt till JSON
+console.log(mikeJSON);    
+console.log(JSON.parse(mikeJSON)); // tillbaka till objekt
+
+//Loop over object
+
+for (let propertyName in mikeAdvanced) 
+{
+    let propertyValue = mikeAdvanced[propertyName];
+    console.log(propertyName, propertyValue);
+
+}
+
+for(let propertyName in mikeAdvanced)
+{
+    let propertyValue = mikeAdvanced[propertyName];
+    if ( Array.isArray(propertyValue) === true)
+    {
+        for(let hobby of propertyValue)
+        {
+            console.log('Hobby: '+ hobby);
+        }
+        
+    }
+    else 
+        {
+            console.log(propertyName + " : " + propertyValue);
+        }
+}
+
+let myDiv = document.createElement('div');
+myDiv.innerHTML = `
+<h1> Hello from JavaScript</h1>
+<p> This text is from Javascript, my age is ${mike.age}</p>`
+;
+
+let body = document.querySelector('body');
+
+body.append(myDiv);
+
+let myBands = [{ 
+    name: 'The Beatles',
+    genre: 'Pop'
+},
+{
+    name: 'The Rolling Stones',
+    genre: 'Rock'
+}
+];
+
+//grabs the bands div
+
+let bandsDiv = document.querySelector('#bands');
+
+for(let band of myBands)
+{
+    bandsDiv.innerHTML +=`
+    <div class="band">
+        <h2>${band.name}</h2>
+        <p> Genre: ${band.genre}</p>
+        </div>`
+}
+
+//funktioner
+
+function sayHello(){
+    console.log('Hello');
+}
+const sayHello2 = () => {
+    console.log('Hello 2');
+}
+
+sayHello();
+sayHello2();
+
+function add(a,b){
+    return a+b;
+}
+//arrow function
+const add2 = (a,b) => {
+    return a+b;
+}
+// function expression
+const add3 = function (a, b) {
+    return a+b;
+}
+//arrow function with implicit return
+const add4 = (a, b) => a + b;
+
+//arrow funtion with implicit return and one parameter
+
+const add5 = a => a+ 5;
+
+console.log(add(1, 2));
+console.log(add2(1, 2));
+console.log(add3(1, 2));
+console.log(add4(1, 2));
+console.log(add5(1));
+
+class Person 
+{
+    constructor(name, age, hobby){
+        this.name = name;
+        this.age = age;
+        this.hobby = hobby;
+    }
+    greetings()
+    {
+        console.log(`Hi, my name is ${this.name} and I am ${this.age}`);
+        console.log('I enjoy: '+ this.hobby);
+    }
+}
+
+const mikeClass = new Person ('Mike ', 38, 'Music');
+mikeClass.greetings();
+
+
